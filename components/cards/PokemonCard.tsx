@@ -1,10 +1,11 @@
+import { Pokemon } from "@/app/features/pokemon/data/models/Pokemon";
 import { View, Text, StyleSheet, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function PokemonCard() {
+export default function PokemonCard({ props }: { props: Pokemon }) {
   return (
     <View style={pokemonCardStyle.card}>
-      <Text>Pokemon Card</Text>
+      <Text>{props.name}</Text>
     </View>
   );
 }
