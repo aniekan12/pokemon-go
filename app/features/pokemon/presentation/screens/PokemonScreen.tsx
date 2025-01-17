@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
   useWindowDimensions,
+  FlatList,
 } from "react-native";
 import { pokemons } from "../../data/models/Pokemon";
 
@@ -12,21 +13,27 @@ export default function PokemonScreen() {
   const { width, height } = useWindowDimensions();
   return (
     <View>
-      <ScrollView>
-        <Text
-          style={[
-            pokemonScreenStyle.title,
-            {
-              fontSize: width > 500 ? 50 : 24,
-            },
-          ]}
-        >
-          Pokemons
-        </Text>
-        {pokemons.map((pokemon) => (
+      {/* <ScrollView> */}
+      <Text
+        style={[
+          pokemonScreenStyle.title,
+          {
+            fontSize: width > 500 ? 50 : 24,
+          },
+        ]}
+      >
+        Pokemons
+      </Text>
+      <FlatList
+        data={pokemons}
+        renderItem={({ item, index }) => (
+          <PokemonCard key={index} props={item} />
+        )}
+      />
+      {/* {pokemons.map((pokemon) => (
           <PokemonCard props={pokemon} />
-        ))}
-      </ScrollView>
+        ))} */}
+      {/* </ScrollView> */}
     </View>
   );
 }
